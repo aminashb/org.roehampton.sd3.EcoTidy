@@ -1,0 +1,105 @@
+Package org.roehampton.libraryOfCleaningAppliances
+
+abstract class Users (
+	private String name;
+	private String userId;
+	private String email;
+	private String phoneNum;
+
+	public User(String name, String userId, String email, String phoneNum){
+		this.name = name;
+		this.userId = userId;
+		this.email = email;
+		this.phoneNum = phoneNum;
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public String getUserId(){
+		return userId;
+	}
+
+	public String getEmail(){
+	    return email;
+	}
+
+	public String getPhoneNum(){
+    		return phoneNum;
+    }
+
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
+
+	public void setEmail(String email){
+    		this.email = email;
+    }
+
+	public void setPhoneNum(String phoneNum){
+        	this.phoneNum = phoneNum;
+    }
+
+    public void register(){}
+    public void login(){}
+    public void Logout(){}
+
+}
+
+Interface IDevice{
+    public void rentOut(){}
+    public void returnDevice(){}
+    public float calculateRentalPrice(int days){
+        rentalPrice = pricePerDay*days
+        return rentalPrice
+    }
+}
+
+abstract class DeviceModel{
+    String modelId;
+    String name;
+    float pricePerDay;
+
+    public DeviceModel(String modelId, String name, float pricePerDay){
+        this.modelId = modelId;
+        this.name = name;
+        this.pricePerDay = pricePerDay;
+    }
+
+    public String getModelId(){
+        return modelId;
+    }
+
+    public String getName(){
+    	return name;
+    }
+
+    public float getPricePerDay(){
+        return pricePerDay;
+    }
+
+    public void setModelId(String modelId){
+        this.modelId = modelId;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setPricePerDay(float pricePerDay){
+        this.pricePerDay = pricePerDay;
+    }
+}
+
+class Device extends DeviceModel{
+    int itemId;
+    int serialNumber;
+    bool status;
+    DeviceModel model
+
+
