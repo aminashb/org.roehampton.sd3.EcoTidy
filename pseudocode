@@ -51,6 +51,65 @@ abstract class Users (
 
 }
 
+class Costumer extends Users{
+    String address;
+    String paymentMethod;
+
+    public Costumer(String name, String userId, String email, String phoneNum, String address, String paymentMethod){
+        super(name, userId, email, phoneNum);
+        this.address = address;
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getAddress(){
+        return address;
+    }
+
+    public String getPaymentMethod(){
+        return paymentMethod
+    }
+
+    public setAddress(String address){
+        this.address = address;
+    }
+
+    public setPaymentMethod(String paymentMethod){
+        this.paymentMethod = paymentMethod;
+    }
+    @Override
+    public void register(){}
+
+    @Override
+    public void login(){}
+
+    @Override
+    public void Logout(){}
+
+    public void placeOrder(){}
+    public void rateService(){}
+}
+
+class Admin extends Users(){
+
+    public Admin(String name, String userId, String email, String phoneNum){
+        super(name, userId, email, phoneNum);
+    }
+    @Override
+    public void register(){}
+
+    @Override
+    public void login(){}
+
+    @Override
+    public void Logout(){}
+
+    public void addAppliance(){}
+    public void manageUsers(){}
+    public void removeAppliance(){}
+    public void viewReport(){}
+
+}
+
 Interface IDevice{
     public void rentOut(){}
     public void returnDevice(){}
@@ -60,7 +119,7 @@ Interface IDevice{
     }
 }
 
-abstract class DeviceModel{
+class DeviceModel{
     String modelId;
     String name;
     float pricePerDay;
@@ -100,6 +159,14 @@ class Device extends DeviceModel{
     int itemId;
     int serialNumber;
     bool status;
-    DeviceModel model
+    DeviceModel model;
+
+    public Device(int itemId, int serialNumber, bool status, DeviceModel model){
+        this.itemId = itemId;
+        this.serialNumber = serialNumber;
+        this.status = status;
+        this.model = model;
+    }
+}
 
 
