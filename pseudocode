@@ -1,6 +1,4 @@
-Package org.roehampton.libraryOfCleaningAppliances
-
-abstract class Users (
+abstract class User {
 	private String name;
 	private String userId;
 	private String email;
@@ -45,17 +43,17 @@ abstract class Users (
         	this.phoneNum = phoneNum;
     }
 
-    public void register(){}
-    public void login(){}
-    public void Logout(){}
+    public void register();
+    public void login();
+    public void Logout();
 
 }
 
-class Costumer extends Users{
+class Customer extends User{
     String address;
     String paymentMethod;
 
-    public Costumer(String name, String userId, String email, String phoneNum, String address, String paymentMethod){
+    public Customer(String name, String userId, String email, String phoneNum, String address, String paymentMethod){
         super(name, userId, email, phoneNum);
         this.address = address;
         this.paymentMethod = paymentMethod;
@@ -77,36 +75,41 @@ class Costumer extends Users{
         this.paymentMethod = paymentMethod;
     }
     @Override
-    public void register(){}
+    public void register();
 
     @Override
-    public void login(){}
+    public void login();
 
     @Override
-    public void Logout(){}
+    public void logout();
 
-    public void placeOrder(){}
-    public void rateService(){}
+    public void placeOrder(){
+        CREATE new ORDED
+        Order.processPayment();
+        Order.confirmOrder();
+        Order.generateInvoice();
+    }
+    public void rateService();
 }
 
-class Admin extends Users(){
+class Admin extends User{
 
     public Admin(String name, String userId, String email, String phoneNum){
         super(name, userId, email, phoneNum);
     }
     @Override
-    public void register(){}
+    public void register();
 
     @Override
-    public void login(){}
+    public void login();
 
     @Override
-    public void Logout(){}
+    public void Logout();
 
-    public void addAppliance(){}
-    public void manageUsers(){}
-    public void removeAppliance(){}
-    public void viewReport(){}
+    public void addAppliance();
+    public void manageUsers();
+    public void removeAppliance();
+    public void viewReport();
 
 }
 
@@ -169,4 +172,102 @@ class Device extends DeviceModel{
     }
 }
 
+class Order{
+    String orderId;
+    String orderDate;
+    String status;
+    double totalCost;
+
+    public Order(String orderId, String orderDate, String status, double totalCost){
+        this.orderId = orderId;
+        this.orderDate = orderDate;
+        this.status = status;
+        this.totalCost = totalCost;
+    }
+
+    public String getOrderId(){
+        return orderId;
+    }
+
+    public String getOrderDate(){
+        return orderDate;
+    }
+
+    public String getStatus(){
+        return status;
+    }
+
+    public double getTotalCost(){
+        return totalCost;
+    }
+
+    public void setOrderId(String orderId){
+        this.orderId = orderId;
+    }
+
+    public void setOrderDate(String orderDate){
+        this.orderDate = orderDate;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+    }
+
+    public double setTotalCost(double totalCost){
+        this.totalCost = totalCost;
+    }
+
+    public void confirmOrder();
+    public void processPayment();
+    public void cancelOrder();
+    public void generateInvoice();
+}
+
+void main(){
+    PRINT
+        Welcome to Ecotidy!
+    CHOOSE USER
+        Admin
+        Customer
+    IF ADMIN
+        CHOOSE
+            Admin.login()
+            Admin.register()
+            VALIDATE IF ADMIN (TRUE)
+                MENU
+                    Admin.addAppliance()
+                    Admin.removeAppliance()
+                    Admin.manageUsers()
+                    Admin.viewReports()
+                    Admin.logout()
+            ELSE RETURN TO WELCOME PAGE
+    ELSE IF CUSTOMER
+        CHOOSE
+            Customer.login()
+            Customer.Regiter()
+            VALIDATE IF CUSTOMER (TRUE)
+                CHOOSE DEVICE CATEGORY
+                    C1
+                    C2
+                    C3
+                    C4
+                    C5
+                    C6
+                    C7
+                    C8
+                    C9
+                    CHOOSE DEVICE
+                        D1
+                        D2
+                        D3
+                        CHOOSE DAYS
+                        Device.calculateRentalPrice(int days);
+                        Device.rentOut();
+                        Customer.placeOrder();
+                        RETURN TO MENU
+                            CHOOSE
+                                Another order
+                                Customer.logout()
+            ELSE RETURN TO WELCOME PAGE
+}
 
