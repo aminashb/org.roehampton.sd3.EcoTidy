@@ -52,11 +52,13 @@ abstract class User {
 class Customer extends User{
     String address;
     String paymentMethod;
+    List<Order> orders;
 
     public Customer(String name, String userId, String email, String phoneNum, String address, String paymentMethod){
         super(name, userId, email, phoneNum);
         this.address = address;
         this.paymentMethod = paymentMethod;
+        orders = new ArrayList<>();
     }
 
     public String getAddress(){
@@ -67,12 +69,20 @@ class Customer extends User{
         return paymentMethod
     }
 
-    public setAddress(String address){
+    public List<Order> getOrders(){
+        return orders;
+    }
+
+    public void setAddress(String address){
         this.address = address;
     }
 
-    public setPaymentMethod(String paymentMethod){
+    public void setPaymentMethod(String paymentMethod){
         this.paymentMethod = paymentMethod;
+    }
+
+    pubilc void setOrders(List<Order> orders){
+        this.orders = orders;
     }
     @Override
     public void register();
@@ -83,8 +93,8 @@ class Customer extends User{
     @Override
     public void logout();
 
-    public void placeOrder(){
-        CREATE new ORDED
+    public void placeOrder(String orderId, String orderDate, String status, double totalCost){
+        Order order = new order(orderId, orderDate, status, totalCost);
         Order.processPayment();
         Order.confirmOrder();
         Order.generateInvoice();
@@ -125,9 +135,9 @@ Interface IDevice{
 class DeviceModel{
     String modelId;
     String name;
-    float pricePerDay;
+    double pricePerDay;
 
-    public DeviceModel(String modelId, String name, float pricePerDay){
+    public DeviceModel(String modelId, String name, double pricePerDay){
         this.modelId = modelId;
         this.name = name;
         this.pricePerDay = pricePerDay;
@@ -141,7 +151,7 @@ class DeviceModel{
     	return name;
     }
 
-    public float getPricePerDay(){
+    public double getPricePerDay(){
         return pricePerDay;
     }
 
@@ -168,6 +178,41 @@ class Device extends DeviceModel{
         this.itemId = itemId;
         this.serialNumber = serialNumber;
         this.status = status;
+        this.model = model;
+    }
+
+    public int getItemId(){
+        return itemId;
+    }
+
+    public int getSerialNumber(){
+        return serialNumber;
+    }
+
+    public String getStatus(){
+        if (status == true){
+            return "Available";
+        }
+        else return "Not available";
+    }
+
+    public String getModel(){
+        return model;
+    }
+
+    public void setItemId(int itemId){
+        this.itemId = itemId;
+    }
+
+    public void setSerialNumber(int serialNumber){
+        this.serialNumber = serialNumber;
+    }
+
+    public void setStatus(bool status){
+        this.status = status;
+    }
+
+    public void setModel(DeviceModel model){
         this.model = model;
     }
 }
