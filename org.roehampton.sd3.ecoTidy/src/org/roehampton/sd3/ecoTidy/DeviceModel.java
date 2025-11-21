@@ -1,11 +1,11 @@
 package org.roehampton.sd3.ecoTidy;
 
-public class DeviceModel{
+public class DeviceModel {
     String modelId;
     String name;
-    double pricePerDay;
+    int pricePerDay;
 
-    public DeviceModel(String modelId, String name, double pricePerDay){
+    public DeviceModel(String modelId, String name, int pricePerDay){
         this.modelId = modelId;
         this.name = name;
         this.pricePerDay = pricePerDay;
@@ -19,7 +19,7 @@ public class DeviceModel{
         return name;
     }
 
-    public double getPricePerDay(){
+    public int getPricePerDay(){
         return pricePerDay;
     }
 
@@ -31,7 +31,11 @@ public class DeviceModel{
         this.name = name;
     }
 
-    public void setPricePerDay(float pricePerDay){
+    public void setPricePerDay(int pricePerDay){
         this.pricePerDay = pricePerDay;
+    }
+
+    public void displayInfo() {
+        System.out.println(modelId + ", " + name + ", £" + pricePerDay + "/ per day");
     }
 }
