@@ -19,9 +19,10 @@ public class InventoryManager {
 
     public void getAvailableDevices() {
         System.out.println("Available Devices:");
-        for (Device item : availableDevices) {
-            String name = item.model.getName();
-            System.out.println(name);
+        for (int j = 0; j < availableDevices.size(); j++) {
+            Device item = availableDevices.get(j);
+            String name = item.model.name;
+            System.out.println(j+1 + ". " + name);
         }
     }
 
@@ -34,4 +35,5 @@ public class InventoryManager {
         unavailableDevices.remove(item);
         availableDevices.add(item);
     }
+
 }

@@ -64,6 +64,10 @@ public class Customer extends User {
         order.processPayment();
         order.generateInvoice();
     }
+
+    public void returnDevice(Device device){
+        device.returnDevice();
+    }
 //    public void rateService();
 
     public void  displayInfo(){

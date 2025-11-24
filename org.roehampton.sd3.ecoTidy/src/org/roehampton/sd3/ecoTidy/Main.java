@@ -42,4 +42,8 @@ void main() {
     c1.placeOrder(3);
     inventory.getAvailableDevices();
 
+    c1.returnDevice(v1);
+    inventory.getAvailableDevices();
+
+
 }
